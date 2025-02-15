@@ -25,10 +25,10 @@ export class Poe1Tree {
   id: string = 'fullSkillTreeContainer';
   @Element() el: HTMLElement;
 
-  componentDidRender() {
-    const query = this.appTree.decodeURLParams(this.urlTree);
+  container: Element;
+  query: { [id: string]: string };
 
-    this.hash = this.urlTree.split('#')[1];
+  componentDidRender() {
 
     const versionsJson: IVersions = {
       versions: [],
@@ -42,22 +42,36 @@ export class Poe1Tree {
       versionsJson.versions.push(value.version);
     }
 
-    if (versionsJson.versions.indexOf(query['v']) === -1) {
-      query['v'] = versionsJson.versions[versionsJson.versions.length - 1];
+    this.query = this.appTree.decodeURLParams(this.urlTree);
+    
+    if(!this.urlTree.includes('pathofexile.com')){
+      this.hash = this.urlTree.split('#')[1];
+    }else{
+      this.query = {
+        'v': versionsJson.versions[versionsJson.versions.length - 1],
+        'c': '',
+        'edit': 'false',
+      }
+      const splited = this.urlTree.split('fullscreen-passive-skill-tree/');
+      this.hash = `#${splited[1]}`;
+      
     }
 
-    if (!query['c']) {
-      query['c'] = '';
-    }
-    console.log(`edit: query = ${query['edit']}`);
-    // if(!query['edit']){
-    //     query['edit'] = 'false';
-    // }
+    
 
+    if (versionsJson.versions.indexOf(this.query['v']) === -1) {
+      this.query['v'] = versionsJson.versions[versionsJson.versions.length - 1];
+    }
+
+    if (!this.query['c']) {
+      this.query['c'] = '';
+    }
+    
     // App.ChangeSkillTreeVersion(query['v'], query['c'], window.location.hash, `${query['edit'] === 'true'}`);
     const container = this.el.shadowRoot.querySelector(`#${this.id}`);
-    this.appTree.launch(container, query['v'], query['c'], versionsJson, this.hash, query['edit'] === 'true');
+    this.appTree.launch(container, this.query['v'], this.query['c'], versionsJson, this.hash, this.query['edit'] === 'true');
   }
+ 
   render() {
     return (
       <div id={this.id}>

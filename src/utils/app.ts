@@ -19,7 +19,7 @@ export class AppTree {
   private uievents!: UIEvents;
 
   public launch = async (container: Element, version: string, versionCompare: string, versionJson: IVersions, hash: string, edit: boolean) => {
-    console.log(`edit: launch = ${edit}`);
+    
     for (const i of [version, versionCompare]) {
       if (i === '') {
         continue;
@@ -505,8 +505,6 @@ export class AppTree {
     }
 
     if (window.location.search !== search) {
-      console.log(`${window.location.search}`);
-      console.log(`${search}`);
       window.location.search = search;
     }
   };

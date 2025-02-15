@@ -19,7 +19,7 @@ export class AppAscendancyTree {
   private uievents!: UIEvents;
   
   public launchAscendancy = async (container: Element, version: string, versionCompare: string, versionJson: IVersions, hash: string, edit: boolean) => {
-    console.log(`edit: launch = ${edit}`);
+
     for (const i of [version, versionCompare]) {
       if (i === '') {
         continue;
@@ -505,8 +505,6 @@ export class AppAscendancyTree {
     }
 
     if (window.location.search !== search) {
-      console.log(`${window.location.search}`);
-      console.log(`${search}`);
       window.location.search = search;
     }
   };

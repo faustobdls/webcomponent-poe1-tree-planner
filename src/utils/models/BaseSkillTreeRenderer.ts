@@ -215,8 +215,6 @@ export abstract class BaseSkillTreeRenderer implements ISkillTreeRenderer {
   private DrawAscendancyBackgrounds = (): void => {
     for (const id in this.skillTreeData.ascendancyNodes) {
       const node = this.skillTreeData.ascendancyNodes[id];
-      // console.log("ascendancyNode")
-      // console.log(node)
       if (!node.isAscendancyStart || node.nodeGroup === undefined) {
         continue;
       }
@@ -236,8 +234,6 @@ export abstract class BaseSkillTreeRenderer implements ISkillTreeRenderer {
 
   private DrawAscendancyBackgroundById = (id: string): void => {
     const node = this.skillTreeData.ascendancyNodes[id];
-    // console.log("ascendancyNode")
-    // console.log(node)
     if (!node.isAscendancyStart || node.nodeGroup === undefined) {
       return;
     }
