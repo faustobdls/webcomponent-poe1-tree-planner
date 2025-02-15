@@ -198,13 +198,7 @@ export class PIXIAscendancyTreeRenderer extends BaseSkillTreeRenderer {
     const activeAscendancyNodesEntries = Object.entries(this.skillTreeData.getNodes(SkillNodeStates.Active));
     const activeAscendancyNodes = activeAscendancyNodesEntries.filter(([_, node]) => node.ascendancyName !== "");
     const activeAscendancyNodeStart = activeAscendancyNodesEntries.filter(([_, node]) => node.ascendancyName !== "" && node.isAscendancyStart)[0][1];
-    // console.log(activeAscendancyNodeStart) 
-
-    // this.viewport.worldWidth = 100;
-    // this.viewport.worldHeight = 100;
-    // this.viewport.screenWidth = 100;
-    // this.viewport.center.x = activeAscendancyNodeStart.x;
-    // this.viewport.center.y = activeAscendancyNodeStart.y;
+    
     this.viewport.center.x = 0;
     this.viewport.center.y = 0;
     this.viewport.setZoom(activeAscendancyNodeStart.scale * 2)
