@@ -859,9 +859,9 @@ export class PIXIAscendancyTreeRenderer extends BaseSkillTreeRenderer {
     this.CustomStopRenderHover(hovered);
 
     /// implement this
-    window.postMessage({name: hovered.name, stats: hovered.stats})
+    window.postMessage({name: hovered.name, stats: hovered.stats.map((v) => `<span>${v}</span>`)})
 
-    this.StartRenderHover(hovered);
+    // this.StartRenderHover(hovered);
   };
   
   CustomStopRenderHover = (hovered: SkillNode): void => {

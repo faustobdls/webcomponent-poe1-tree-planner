@@ -51,7 +51,7 @@ export class AppTree {
         .Initialize()
         .then(() => {
           this.SetupEventsAndControls(edit, false);
-          this.renderer.RenderBase();
+          this.renderer.RenderBaseTree();
           this.skillTreeUtilities.decodeURL(hash);
           this.renderer.RenderCharacterStartsActive();
           this.renderer.RenderActive();

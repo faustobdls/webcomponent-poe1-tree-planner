@@ -12,6 +12,7 @@ interface ISkillTreeRenderer {
     RenderActive(): void;
     RenderActiveAscendancy(): void;
     RenderBase(): void;
+    RenderBaseTree(): void;
     RenderBaseAscendancy(): void;
     RenderCharacterStartsActive(): void;
     RenderHighlight(): void;
