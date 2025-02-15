@@ -6,56 +6,61 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
-    interface MyComponent {
+    interface Poe1AscendancyTree {
         /**
-          * The first name
+          * The urlTree
          */
-        "first": string;
+        "urlTree": string;
+    }
+    interface Poe1Tree {
         /**
-          * The last name
+          * The urlTree
          */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+        "urlTree": string;
     }
 }
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLPoe1AscendancyTreeElement extends Components.Poe1AscendancyTree, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLPoe1AscendancyTreeElement: {
+        prototype: HTMLPoe1AscendancyTreeElement;
+        new (): HTMLPoe1AscendancyTreeElement;
+    };
+    interface HTMLPoe1TreeElement extends Components.Poe1Tree, HTMLStencilElement {
+    }
+    var HTMLPoe1TreeElement: {
+        prototype: HTMLPoe1TreeElement;
+        new (): HTMLPoe1TreeElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "poe1-ascendancy-tree": HTMLPoe1AscendancyTreeElement;
+        "poe1-tree": HTMLPoe1TreeElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
+    interface Poe1AscendancyTree {
         /**
-          * The first name
+          * The urlTree
          */
-        "first"?: string;
+        "urlTree"?: string;
+    }
+    interface Poe1Tree {
         /**
-          * The last name
+          * The urlTree
          */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+        "urlTree"?: string;
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "poe1-ascendancy-tree": Poe1AscendancyTree;
+        "poe1-tree": Poe1Tree;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "poe1-ascendancy-tree": LocalJSX.Poe1AscendancyTree & JSXBase.HTMLAttributes<HTMLPoe1AscendancyTreeElement>;
+            "poe1-tree": LocalJSX.Poe1Tree & JSXBase.HTMLAttributes<HTMLPoe1TreeElement>;
         }
     }
 }

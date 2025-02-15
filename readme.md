@@ -19,8 +19,8 @@ Stencil components are just Web Components, so they work in any major framework 
 To start building a new web component using Stencil, clone this repo to a new directory:
 
 ```bash
-git clone https://github.com/ionic-team/stencil-component-starter.git my-component
-cd my-component
+git clone https://github.com/ionic-team/stencil-component-starter.git poe1-ascendancy-tree
+cd poe1-ascendancy-tree
 git remote rm origin
 ```
 
@@ -63,7 +63,7 @@ You can read more about these different approaches in the [Stencil docs](https:/
 
 If your Stencil project is built with the [`dist`](https://stenciljs.com/docs/distribution) output target, you can import a small bootstrap script that registers all components and allows you to load individual component scripts lazily.
 
-For example, given your Stencil project namespace is called `my-design-system`, to use `my-component` on any website, inject this into your HTML:
+For example, given your Stencil project namespace is called `my-design-system`, to use `poe1-ascendancy-tree` on any website, inject this into your HTML:
 
 ```html
 <script type="module" src="https://unpkg.com/my-design-system"></script>
@@ -71,10 +71,10 @@ For example, given your Stencil project namespace is called `my-design-system`, 
 To avoid unpkg.com redirects to the actual file, you can also directly import:
 https://unpkg.com/foobar-design-system@0.0.1/dist/foobar-design-system/foobar-design-system.esm.js
 -->
-<my-component first="Stencil" middle="'Don't call me a framework'" last="JS"></my-component>
+<poe1-ascendancy-tree first="Stencil" middle="'Don't call me a framework'" last="JS"></poe1-ascendancy-tree>
 ```
 
-This will only load the necessary scripts needed to render `<my-component />`. Once more components of this package are used, they will automatically be loaded lazily.
+This will only load the necessary scripts needed to render `<poe1-ascendancy-tree />`. Once more components of this package are used, they will automatically be loaded lazily.
 
 You can also import the script as part of your `node_modules` in your applications entry file:
 
@@ -90,20 +90,20 @@ If you are using a Stencil component library with `dist-custom-elements`, we rec
 
 To export Stencil components as standalone components make sure you have the [`dist-custom-elements`](https://stenciljs.com/docs/custom-elements) output target defined in your `stencil.config.ts`.
 
-For example, given you'd like to use `<my-component />` as part of a React component, you can import the component directly via:
+For example, given you'd like to use `<poe1-ascendancy-tree />` as part of a React component, you can import the component directly via:
 
 ```tsx
-import 'foobar-design-system/my-component';
+import 'foobar-design-system/poe1-ascendancy-tree';
 
 function App() {
   return (
     <>
       <div>
-        <my-component
+        <poe1-ascendancy-tree
           first="Stencil"
           middle="'Don't call me a framework'"
           last="JS"
-        ></my-component>
+        ></poe1-ascendancy-tree>
       </div>
     </>
   );

@@ -1,7 +1,7 @@
 import { Config } from '@stencil/core';
 
 export const config: Config = {
-  namespace: 'poe1-ascendancy-tree',
+  namespace: 'poe1-custom-tree-components',
   outputTargets: [
     {
       type: 'dist',

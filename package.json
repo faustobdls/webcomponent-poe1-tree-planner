@@ -13,9 +13,9 @@
       "import": "./dist/poe1-ascendancy-tree/poe1-ascendancy-tree.esm.js",
       "require": "./dist/poe1-ascendancy-tree/poe1-ascendancy-tree.cjs.js"
     },
-    "./my-component": {
-      "import": "./dist/components/my-component.js",
-      "types": "./dist/components/my-component.d.ts"
+    "./poe1-ascendancy-tree": {
+      "import": "./dist/components/poe1-ascendancy-tree.js",
+      "types": "./dist/components/poe1-ascendancy-tree.d.ts"
     },
     "./loader": {
       "import": "./loader/index.js",
@@ -40,11 +40,57 @@
   },
   "devDependencies": {
     "@stencil/core": "^4.7.0",
+    "@types/css-font-loading-module": "^0.0.14",
     "@types/jest": "^29.5.6",
     "@types/node": "^16.18.11",
+    "@types/semver": "^7.5.4",
     "jest": "^29.7.0",
     "jest-cli": "^29.7.0",
     "puppeteer": "^21.9.0"
+  },
+  "dependencies": {
+    "@pixi-essentials/cull": "^2.0.0",
+    "@pixi/accessibility": "7.3.1",
+    "@pixi/app": "7.3.1",
+    "@pixi/assets": "7.3.1",
+    "@pixi/color": "7.3.1",
+    "@pixi/colord": "2.9.6",
+    "@pixi/compressed-textures": "7.3.1",
+    "@pixi/constants": "7.3.1",
+    "@pixi/core": "7.3.1",
+    "@pixi/display": "7.3.1",
+    "@pixi/events": "7.3.1",
+    "@pixi/extensions": "7.3.1",
+    "@pixi/extract": "7.3.1",
+    "@pixi/filter-alpha": "7.3.1",
+    "@pixi/filter-blur": "7.3.1",
+    "@pixi/filter-color-matrix": "7.3.1",
+    "@pixi/filter-displacement": "7.3.1",
+    "@pixi/filter-fxaa": "7.3.1",
+    "@pixi/filter-noise": "7.3.1",
+    "@pixi/graphics": "7.3.1",
+    "@pixi/math": "7.3.1",
+    "@pixi/mesh": "7.3.1",
+    "@pixi/mesh-extras": "7.3.1",
+    "@pixi/mixin-cache-as-bitmap": "7.3.1",
+    "@pixi/mixin-get-child-by-name": "7.3.1",
+    "@pixi/mixin-get-global-position": "7.3.1",
+    "@pixi/particle-container": "7.3.1",
+    "@pixi/prepare": "7.3.1",
+    "@pixi/runner": "7.3.1",
+    "@pixi/settings": "7.3.1",
+    "@pixi/sprite": "7.3.1",
+    "@pixi/sprite-animated": "7.3.1",
+    "@pixi/sprite-tiling": "7.3.1",
+    "@pixi/spritesheet": "7.3.1",
+    "@pixi/text": "7.3.1",
+    "@pixi/text-bitmap": "7.3.1",
+    "@pixi/text-html": "7.3.1",
+    "@pixi/ticker": "7.3.1",
+    "@pixi/utils": "7.3.1",
+    "pixi-viewport": "5.0.2",
+    "pixi.js": "7.3.1",
+    "semver": "^7.5.4"
   },
   "license": "MIT"
 }
