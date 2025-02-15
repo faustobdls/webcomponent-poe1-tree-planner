@@ -77,6 +77,38 @@ export abstract class BaseSkillTreeRenderer implements ISkillTreeRenderer {
     this.DrawInactiveNodes();
     this.DrawCompareHighlights();
   };
+  public RenderBaseTree = (): void => {
+    if (!this.Initialized) {
+      return;
+    }
+
+    
+    const activeAscendancyNodesEntries = Object.entries(this.skillTreeData.nodes);
+    const activeAscendancyNodes = activeAscendancyNodesEntries.filter(([_, node]) => node.ascendancyName === '');
+
+    this.SetupLayers();
+    this.GenerateCompare();
+
+    this.ClearLayer(RenderLayer.Background);
+    this.DrawBackground();
+
+    this.ClearLayer(RenderLayer.GroupBackground);
+    // this.DrawGroupBackgrounds();
+    // this.DrawAscendancyBackgrounds();
+
+    this.ClearLayer(RenderLayer.CharacterStarts);
+    this.DrawInactiveCharacters();
+
+    this.ClearLayer(RenderLayer.Connections);
+    this.DrawConnectionsForNodes(RenderLayer.Connections, Object.fromEntries(activeAscendancyNodes));
+
+    this.ClearLayer(RenderLayer.SkillIcons);
+    this.ClearLayer(RenderLayer.SkillIconsFrames);
+    this.ClearLayer(RenderLayer.SkillIconsCompare);
+    this.DrawNodes(RenderLayer.SkillIcons, Object.fromEntries(activeAscendancyNodes), Object.fromEntries(activeAscendancyNodes), { filterClassIndex: true, bindEvents: true });
+    // this.DrawInactiveNodes();
+    // this.DrawCompareHighlights();
+  };
   public RenderBaseAscendancy = (): void => {
     if (!this.Initialized) {
       return;

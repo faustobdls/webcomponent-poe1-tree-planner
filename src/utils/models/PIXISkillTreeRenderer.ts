@@ -214,6 +214,14 @@ export class PIXISkillTreeRenderer extends BaseSkillTreeRenderer {
     return this.InitializeSpriteSheets();
   }
 
+  public RenderBase = (): void => {
+    if (!this.Initialized) {
+      return;
+    }
+
+    this.RenderBaseTree();
+  };
+
   private LoadAssets = (data: (SkillTreeData | undefined)[]): Promise<boolean> => {
     const filteredData = data.filter(utils.NotUndefined);
     if (filteredData.length <= 0) {
