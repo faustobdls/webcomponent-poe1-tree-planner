@@ -5,7 +5,9 @@ export function format(first?: string, middle?: string, last?: string): string {
 export class utils {
     public static poecdn = "http://web.poecdn.com/";
     // https://droprate.pro/PathofExile/tree/data/skill-trees/3.25.0/SkillTree.json
-    public static DATA_URI = "assets";
+    // https://droprate.pro/PathofExile/tree/data
+    // https://faustobdls.github.io/webcomponent-poe1-tree-planner/assets
+    public static DATA_URI = "https://droprate.pro/PathofExile/tree/data";
     public static SKILL_TREES_URI = `${utils.DATA_URI}/skill-trees`;
 
     public static getKeyByValue(dict: { [key: string]: any }, value: any): string | undefined {
