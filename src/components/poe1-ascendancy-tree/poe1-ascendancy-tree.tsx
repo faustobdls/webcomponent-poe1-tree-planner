@@ -44,16 +44,16 @@ export class Poe1AscendancyTree {
     this.query = this.appTree.decodeURLParams(this.urlTree);
     
     if(!this.urlTree.includes('pathofexile.com')){
-      this.hash = this.urlTree.split('#')[1];
+      const splited = this.urlTree.split('#');
+      this.hash = splited[splited.length - 1];
     }else{
       this.query = {
         'v': versionsJson.versions[versionsJson.versions.length - 1],
         'c': '',
         'edit': 'false',
       }
-      const splited = this.urlTree.split('fullscreen-passive-skill-tree/');
-      this.hash = `#${splited[1]}`;
-      
+      const splited = this.urlTree.split('/');
+      this.hash = `#${splited[splited.length - 1]}`;
     }
 
     

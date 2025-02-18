@@ -856,7 +856,7 @@ export class PIXIAscendancyTreeRenderer extends BaseSkillTreeRenderer {
       return;
     }
     /// implement this
-    window.postMessage({name: hovered.name, stats: hovered.stats.map((v) => `<span>${v}</span>`)})
+    window.postMessage({name: hovered.name, stats: hovered.stats.map((v) => `<span>${v}</span>`)});
 
     // this.StartRenderHover(hovered);
   };
@@ -871,7 +871,7 @@ export class PIXIAscendancyTreeRenderer extends BaseSkillTreeRenderer {
     }
 
     /// implement this
-    window.postMessage({name: '', stats: ''})
+    window.postMessage({name: '', stats: ''});
 
     this.StopRenderHover(hovered);
     
