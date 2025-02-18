@@ -852,6 +852,9 @@ export class PIXIAscendancyTreeRenderer extends BaseSkillTreeRenderer {
     }
     this.CustomStopRenderHover(hovered);
 
+    if(hovered.ascendancyName === ''){
+      return;
+    }
     /// implement this
     window.postMessage({name: hovered.name, stats: hovered.stats.map((v) => `<span>${v}</span>`)})
 
@@ -863,6 +866,10 @@ export class PIXIAscendancyTreeRenderer extends BaseSkillTreeRenderer {
       return;
     }
     
+    if(hovered.ascendancyName === ''){
+      return;
+    }
+
     /// implement this
     window.postMessage({name: '', stats: ''})
 
