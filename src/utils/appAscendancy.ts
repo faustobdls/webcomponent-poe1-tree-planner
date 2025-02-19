@@ -30,7 +30,7 @@ export class AppAscendancyTree {
       if (semver.compare(versions.v2_2_0) >= 0 && semver.compare(versions.v3_9_0) <= 0) {
         options = await fetch(`${utils.SKILL_TREES_URI}/${i}/Opts.json`).then(response => (response.status === 200 ? response.json() : undefined));
       }
-      var json = (await fetch(`${utils.SKILL_TREES_URI}/${i}/SkillTree.json`).then(response => response.json())) as ISkillTreeBase;
+      var json = (await fetch(`${utils.SKILL_TREES_URI}/${i}/alternate.json`).then(response => response.json())) as ISkillTreeBase;
       const data = new SkillTreeData(SkillTreePreprocessors.Decode(json, options), semver);
 
       if (i === version) {
