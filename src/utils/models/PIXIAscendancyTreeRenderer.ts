@@ -53,13 +53,13 @@ export class PIXIAscendancyTreeRenderer extends BaseSkillTreeRenderer {
     super(container, skillTreeData, skillTreeDataCompare);
     this.NodeTooltips = {};
     this.NodeSpritesheets = {};
-    
+
     this.pixi = new PIXI.Application({
       width: container.clientWidth,
       height: container.clientWidth,
       resolution: 1,
       sharedTicker: true,
-      backgroundColor: '#0a0b0df6'//skillTreeData.patch.compare(versions.v3_16_0) >= 0 ? 0x070b10 : 0x1a1411,
+      backgroundColor: '#0a0b0df6', //skillTreeData.patch.compare(versions.v3_16_0) >= 0 ? 0x070b10 : 0x1a1411,
     });
     PIXI.Ticker.shared.stop();
     PIXI.Ticker.system.stop();
@@ -112,10 +112,8 @@ export class PIXIAscendancyTreeRenderer extends BaseSkillTreeRenderer {
     this.viewport.on('pointerup', event => SkillTreeEvents.viewport.fire('up', this.viewport.toWorld(event.global)));
     this.viewport.on('pointercancel', () => SkillTreeEvents.viewport.fire('cancel'));
 
-
     this.pixi.stage.removeChildren();
     this.pixi.stage.addChild(this.viewport);
-
 
     window.onresize = () => {
       this.pixi.renderer.resize(container.clientWidth, container.clientWidth);
@@ -123,7 +121,7 @@ export class PIXIAscendancyTreeRenderer extends BaseSkillTreeRenderer {
         this.pixi.renderer.width,
         this.pixi.renderer.height,
         this.skillTreeData.width * (this.skillTreeData.scale * 1.25),
-        this.skillTreeData.height * (this.skillTreeData.scale * 1.25)
+        this.skillTreeData.height * (this.skillTreeData.scale * 1.25),
       );
       this.viewport.clampZoom(defaultZoomLimits);
     };
@@ -196,13 +194,16 @@ export class PIXIAscendancyTreeRenderer extends BaseSkillTreeRenderer {
 
   public PositionedOn(): void {
     const activeAscendancyNodesEntries = Object.entries(this.skillTreeData.getNodes(SkillNodeStates.Active));
-    const activeAscendancyNodes = activeAscendancyNodesEntries.filter(([_, node]) => node.ascendancyName !== "");
-    const activeAscendancyNodeStart = activeAscendancyNodesEntries.filter(([_, node]) => node.ascendancyName !== "" && node.isAscendancyStart)[0][1];
-    
-    this.viewport.center.x = 0;
-    this.viewport.center.y = 0;
-    this.viewport.setZoom(activeAscendancyNodeStart.scale * 2)
-    this.viewport.moveCenter(activeAscendancyNodeStart.x, activeAscendancyNodeStart.y);
+    const activeAscendancyNodes = activeAscendancyNodesEntries.filter(([_, node]) => node.ascendancyName !== '');
+    const activeAscendancyNodeStartNodes = activeAscendancyNodesEntries.filter(([_, node]) => node.ascendancyName !== '' && node.isAscendancyStart);
+    const activeAscendancyNodeStartNodesEnable = activeAscendancyNodeStartNodes.length > 0 && activeAscendancyNodes[0].length > 1;
+    if (activeAscendancyNodeStartNodesEnable) {
+      const activeAscendancyNodeStart = activeAscendancyNodeStartNodes[0][1];
+      this.viewport.center.x = 0;
+      this.viewport.center.y = 0;
+      this.viewport.setZoom(activeAscendancyNodeStart.scale * 2);
+      this.viewport.moveCenter(activeAscendancyNodeStart.x, activeAscendancyNodeStart.y);
+    }
   }
 
   async Initialize(): Promise<boolean> {
@@ -852,28 +853,27 @@ export class PIXIAscendancyTreeRenderer extends BaseSkillTreeRenderer {
     }
     this.CustomStopRenderHover(hovered);
 
-    if(hovered.ascendancyName === ''){
+    if (hovered.ascendancyName === '') {
       return;
     }
     /// implement this
-    window.postMessage({name: hovered.name, stats: hovered.stats.map((v) => `<span>${v}</span>`)});
+    window.postMessage({ name: hovered.name, stats: hovered.stats.map(v => `<span>${v}</span>`) });
 
     // this.StartRenderHover(hovered);
   };
-  
+
   CustomStopRenderHover = (hovered: SkillNode): void => {
     if (!this.Initialized) {
       return;
     }
-    
-    if(hovered.ascendancyName === ''){
+
+    if (hovered.ascendancyName === '') {
       return;
     }
 
     /// implement this
-    window.postMessage({name: '', stats: ''});
+    window.postMessage({ name: '', stats: '' });
 
     this.StopRenderHover(hovered);
-    
   };
 }
