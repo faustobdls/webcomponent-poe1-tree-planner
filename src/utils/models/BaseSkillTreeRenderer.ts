@@ -82,7 +82,6 @@ export abstract class BaseSkillTreeRenderer implements ISkillTreeRenderer {
       return;
     }
 
-    
     const activeAscendancyNodesEntries = Object.entries(this.skillTreeData.nodes);
     const activeAscendancyNodes = activeAscendancyNodesEntries.filter(([_, node]) => node.ascendancyName === '');
 
@@ -592,14 +591,18 @@ export abstract class BaseSkillTreeRenderer implements ISkillTreeRenderer {
 
     const activeAscendancyNodesEntries = Object.entries(this.skillTreeData.getNodes(SkillNodeStates.Active));
     const activeAscendancyNodes = activeAscendancyNodesEntries.filter(([_, node]) => node.ascendancyName !== '');
-    const activeAscendancyNodeStart = activeAscendancyNodesEntries.filter(([_, node]) => node.ascendancyName !== '' && node.isAscendancyStart)[0][1];
-    this.DrawAscendancyBackgroundById(activeAscendancyNodeStart.id);
-    this.ClearLayer(RenderLayer.ConnectionsPathing);
-    this.ClearLayer(RenderLayer.ConnectionsActive);
-    const allNodesEntries = Object.entries(this.skillTreeData.nodes);
-    const inactiveAscendancyNodes = allNodesEntries.filter(([_, node]) => node.ascendancyName === activeAscendancyNodeStart.ascendancyName);
-    this.DrawConnectionsForNodes(RenderLayer.Connections, Object.fromEntries(inactiveAscendancyNodes));
-    this.DrawNodes(RenderLayer.SkillIcons, Object.fromEntries(inactiveAscendancyNodes), {}, { outFrames: true });
+    const activeAscendancyNodeStartNodes = activeAscendancyNodesEntries.filter(([_, node]) => node.ascendancyName !== '' && node.isAscendancyStart);
+    const activeAscendancyNodeStartNodesEnable = activeAscendancyNodeStartNodes.length > 0 && activeAscendancyNodes[0].length > 1;
+    if (activeAscendancyNodeStartNodesEnable) {
+      const activeAscendancyNodeStart = activeAscendancyNodeStartNodes[0][1];
+      this.DrawAscendancyBackgroundById(activeAscendancyNodeStart.id);
+      const allNodesEntries = Object.entries(this.skillTreeData.nodes);
+      const inactiveAscendancyNodes = allNodesEntries.filter(([_, node]) => node.ascendancyName === activeAscendancyNodeStart.ascendancyName);
+      this.ClearLayer(RenderLayer.ConnectionsPathing);
+      this.ClearLayer(RenderLayer.ConnectionsActive);
+      this.DrawConnectionsForNodes(RenderLayer.Connections, Object.fromEntries(inactiveAscendancyNodes));
+      this.DrawNodes(RenderLayer.SkillIcons, Object.fromEntries(inactiveAscendancyNodes), {}, { outFrames: true });
+    }
 
     this.DrawConnectionsForNodes(RenderLayer.ConnectionsActive, Object.fromEntries(activeAscendancyNodes));
 
